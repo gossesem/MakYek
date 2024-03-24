@@ -322,11 +322,8 @@ public class MakYek {
             }
         }
     }
-/*
 
 
-
- */
     private boolean isValidPosition(int row, int col) {
         return row >= 0 && row < ROWS && col >= 0 && col < COLUMNS;
     }
