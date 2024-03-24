@@ -1,20 +1,19 @@
-import java.util.Scanner;
-public class MakYek {
+public class Board {
+    /* Here we create the board and update the positions */
+
     private static final int ROWS = 8;
     private static final int COLUMNS = 8;
     private static final char EMPTY = '.';
-    private static final char PLAYER_ONE = 'X';
-    private static final char PLAYER_TWO = 'O';
+    private final char[][] board;
+
+    public static final char PLAYER_ONE = 'X';
+    public static final char PLAYER_TWO = 'O';
 
 
-    private char[][] board;
-
-
-    public MakYek() {
+    public Board() {
         board = new char[ROWS][COLUMNS]; //
         initializeBoard();
     }
-
 
     private void initializeBoard() {
         for (int i = 0; i < ROWS; i++) {
@@ -41,7 +40,6 @@ public class MakYek {
             System.out.println();
         }
     }
-
 
     public boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol, char player) {
 
@@ -75,11 +73,6 @@ public class MakYek {
         return true; // Placeholder, implement actual validation
     }
 
-
-
-
-    // capture logic // elimineer player_one of playe_two
-
     public boolean makeMove(int fromRow, int fromCol, int toRow, int toCol, char player) {
         if (isValidMove(fromRow, fromCol, toRow, toCol, player)) {
             // Check if there is a piece of the opponent's color in the middle
@@ -102,66 +95,8 @@ public class MakYek {
         return false;
     }
 
-
     // Move the piece to the destination square
 //            board[toRow][toCol] = board[fromRow][fromCol];
 //            board[fromRow][fromCol] = EMPTY;
-
-
-    // Check for win condition
-//            if (isGameOver(player)) {
-//                System.out.println("Game over! Player " + player + " wins.");
-//                System.exit(0); // Exit the game
-//            }
-//        } else {
-//            System.out.println("Invalid move. Try again.");
-//        }
-//    }
-
-
-
-
-    private boolean isGameOver(char player) {
-        throw new UnsupportedOperationException("Unimplemented method 'isGameOver'");
-    }
-
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        MakYek game = new MakYek();
-
-
-        System.out.println("Initial Board:");
-        game.printBoard();
-
-
-        // Implement game loop
-        char currentPlayer = PLAYER_ONE;
-
-
-        while (true) {
-            System.out.println("Player " + currentPlayer + "'s turn.");
-            System.out.println("Enter the row and column of the piece you want to move (from):");
-            int fromRow = scanner.nextInt();
-            int fromCol = scanner.nextInt();
-
-
-            System.out.println("Enter the row and column of the square you want to move to (to):");
-            int toRow = scanner.nextInt();
-            int toCol = scanner.nextInt();
-
-
-            game.makeMove(fromRow, fromCol, toRow, toCol, currentPlayer);
-            game.printBoard();
-
-
-            // Check for win condition or switch player
-            // Implement win condition check
-
-
-            currentPlayer = (currentPlayer == PLAYER_ONE) ? PLAYER_TWO : PLAYER_ONE;
-        }
-    }
-
 
 }
